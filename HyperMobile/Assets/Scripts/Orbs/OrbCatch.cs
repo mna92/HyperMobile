@@ -12,18 +12,21 @@ public class OrbCatch : MonoBehaviour
         {
             orbCatchAudio.Play();
             ScoreUpdater.score += 1;
+            ScoreUpdater.orbCathed += 1;
         }
 
         if (other.tag == "BlueOrb")
         {
             orbCatchAudio.Play();
             ScoreUpdater.score += 2;
+            ScoreUpdater.orbCathed += 1;
         }
 
         if (other.tag == "GreenOrb")
         {
             orbCatchAudio.Play();
             ScoreUpdater.score += 3;
+            ScoreUpdater.orbCathed += 1;
         }
         Destroy(other.gameObject,0.1f);
     }
