@@ -5,6 +5,8 @@ using UnityEngine;
 public class OrbGenerator : MonoBehaviour
 {
     public GameObject[] orbFall;
+    GameObject clone;
+    public float[] horizontalLocation = {-1.5f,0f,1.5f};
     public bool orbGenerator = false;
     public int orbLocation;
     public int orbColor;
@@ -14,7 +16,7 @@ public class OrbGenerator : MonoBehaviour
         if (!orbGenerator)
         {
             orbGenerator=true;
-            orbLocation = Random.Range(1, 4);
+            orbLocation = Random.Range(0, 3);
             orbColor = Random.Range(0, 3);
             StartCoroutine(DelayGenerator());
         }
@@ -22,10 +24,9 @@ public class OrbGenerator : MonoBehaviour
 
     IEnumerator DelayGenerator()
     {
-        GameObject clone;
-        clone = Instantiate(orbFall[orbColor], new Vector3(-1.5f, 5f, 0f), Quaternion.identity) as GameObject;
+        clone = Instantiate(orbFall[orbColor], new Vector3(horizontalLocation[orbLocation], 5f, 0f), Quaternion.identity) as GameObject;
         yield return new WaitForSeconds(0.5f);
         orbGenerator = false;
-        Destroy(clone, 4f);
+        Destroy(clone,4f);
     }
 }

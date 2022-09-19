@@ -8,6 +8,7 @@ public class CatchFunctions : MonoBehaviour
     public GameObject leftPlatform;
     public GameObject middlePlatform;
     public GameObject rightPlatform;
+    public AudioSource activeAuido;
 
     public bool activePlatform = false;
 
@@ -43,7 +44,8 @@ public class CatchFunctions : MonoBehaviour
 
     IEnumerator ResetPlatform()
     {
-        yield return new WaitForSeconds(0.3f);
+        activeAuido.Play();
+        yield return new WaitForSeconds(0.5f);
         leftPlatform.SetActive(false);
         rightPlatform.SetActive(false);
         middlePlatform.SetActive(false);
